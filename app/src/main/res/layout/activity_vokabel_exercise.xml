@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VokabelExercise"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/id_txt_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="23dp"
+        android:focusable="false"
+        android:gravity="center"
+        android:text="@string/txt_pointsSum"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/id_btn_okay"
+        app:layout_constraintStart_toEndOf="@+id/id_lbl_points"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/id_lbl_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:focusable="false"
+        android:gravity="center"
+        android:text="@string/lbl_points"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/id_txt_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="97dp"
+        android:layout_marginTop="96dp"
+        android:focusable="false"
+        android:gravity="center"
+        android:text="@string/txt_question"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/id_txt_answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/id_lbl_points" />
+
+    <EditText
+        android:id="@+id/id_txt_answer"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="207dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="206dp"
+        android:gravity="center"
+        android:hint="@string/dsc_blank"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:singleLine="false"
+        android:text="@string/dsc_blank"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="24sp"
+        android:typeface="normal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/id_btn_okay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_lbl_points" />
+
+    <Button
+        android:id="@+id/id_btn_solution"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/btn_solution"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/id_btn_new"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/id_btn_new" />
+
+    <Button
+        android:id="@+id/id_btn_new"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/btn_new"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_btn_solution" />
+
+    <Button
+        android:id="@+id/id_btn_okay"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:text="@string/btn_okay"
+        app:layout_constraintBaseline_toBaselineOf="@+id/id_txt_answer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

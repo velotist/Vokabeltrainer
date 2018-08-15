@@ -1,0 +1,110 @@
+to avoid,avoided,avoided
+vermeiden
+to mention,mentioned,mentioned
+erwähnen
+work educator
+Arbeitserzieher
+management assistant
+Kaufmann
+to be,was,been
+sein
+enclosure
+Anhang
+attachment
+Anhang
+to receive,received,received
+erhalten
+to acknowledge,acknowledged,acknowledged
+annehmen
+to read,read,read
+lesen
+to like,liked,liked
+mögen
+occasionally
+gelegentlich
+to draft a letter
+einen Brief schreiben
+confidential
+vertraulich
+unsuitable
+unpassend
+inconvenient
+unpassend
+subject line
+Betreffzeile
+to acknowledge receipt of
+den Erhalt bestätigen
+printed matter
+Drucksache
+response
+Antwort
+reply
+Antwort
+answer
+Antwort
+signature
+Unterschrift
+junk mail
+Spam Mail
+about
+bezüglich
+to confirm,confirmed,confirmed
+bestätigen
+to look forward to
+sich freuen auf etwas
+to forward,forwarded,forwarded
+senden
+to forward,forwarded,forwarded
+weiterleiten
+above mentioned
+oben genannt
+inbox
+Posteingang
+outbox
+Postausgang
+introduction
+Vorstellung
+to introduce,introduced,introduced
+vorstellen
+company
+Firma
+company
+Unternehmen
+company
+Gesellschaft
+to take a message
+eine Nachricht entgegennehmen
+to match
+zuordnen
+to answer a call
+einen Anruf entgegennehmen
+to resond,responded,responded
+antworten
+to greet,greeted,greeted
+grüßen
+visitors
+Besucher
+office
+Büro
+business card
+Visitenkarte
+vocational
+geschäftlich
+retraining
+Umschulung
+industrial management assistant
+Industriekaufmann
+industrial management assistant
+Industriekauffrau
+IT specialist in application
+Fachinformatiker Anwendungsentwicklung
+IT specialist in application
+Fachinformatikerin Anwendungsentwicklung
+product designer
+Technischer Produktdesigner
+product designer
+Technische Produktdesignerin
+trained assistant
+Fachkraft
+headquarters
+Hauptsitz
