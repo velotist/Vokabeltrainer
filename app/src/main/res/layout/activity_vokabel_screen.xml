@@ -21,11 +21,24 @@
     <ImageView
         android:id="@+id/id_img_ffw"
         android:layout_width="0dp"
-        android:layout_height="228dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="171dp"
         android:contentDescription="@string/dsc_ffw"
+        app:layout_constraintBottom_toTopOf="@+id/id_btn_importTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ffwog" />
+
+    <Button
+        android:id="@+id/id_btn_importTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="54dp"
+        android:text="@string/btn_importTxt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_img_ffw" />
 </android.support.constraint.ConstraintLayout>
