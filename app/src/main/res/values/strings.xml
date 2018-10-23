@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Vokabeltrainer BUS 2018</string>
     <string name="btn_start">Start</string>
+    <string name="btn_importTxt">Vokabeln importieren</string>
     <string name="lbl_points">Deine Punkte / Your Points</string>
     <string name="txt_pointsSum">0000</string>
     <string name="btn_okay">OK</string>
@@ -10,4 +11,6 @@
     <string name="dsc_blank" />
     <string name="txt_true">Richtig / Correct</string>
     <string name="txt_question">Frage / Question</string>
+    <string name="txt_read">Lesen</string>
+    <string name="txt_write">Speichern</string>
 </resources>

@@ -14,6 +14,8 @@ public class VokabelScreen extends AppCompatActivity {
         setContentView(R.layout.activity_vokabel_screen);
         Button btnStart = findViewById(R.id.id_btn_start);
         btnStart.setOnClickListener(clickListener);
+        Button btn_importTxt = findViewById(R.id.id_btn_importTxt);
+        btn_importTxt.setOnClickListener(clickListener);
     }
 
     private final View.OnClickListener clickListener = new View.OnClickListener() {
@@ -24,6 +26,10 @@ public class VokabelScreen extends AppCompatActivity {
                 case R.id.id_btn_start:
                     Intent intentGerEn = new Intent(VokabelScreen.this, VokabelExercise.class);
                     startActivity(intentGerEn);
+                    break;
+                case R.id.id_btn_importTxt:
+                    Intent intentImportTxt = new Intent(VokabelScreen.this, ReadWriteTxtFile.class);
+                    startActivity(intentImportTxt);
                     break;
                 default:
                     break;
