@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 
 public class ReadWriteTxtFile {
     final static String fileName = "vokabeln.txt";
-    final static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/itsmus/readwrite/" ;
+    final static String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
     final static String TAG = ReadWriteTxtFile.class.getName();
 
     public static  String ReadFile(Context context){
@@ -46,7 +46,7 @@ public class ReadWriteTxtFile {
 
     public static boolean saveToFile( String data){
         try {
-            new File(path  ).mkdir();
+            new File(path).mkdir();
             File file = new File(path+ fileName);
             if (!file.exists()) {
                 file.createNewFile();
