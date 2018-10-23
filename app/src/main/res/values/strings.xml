@@ -11,4 +11,6 @@
     <string name="dsc_blank" />
     <string name="txt_true">Richtig / Correct</string>
     <string name="txt_question">Frage / Question</string>
+    <string name="txt_read">Lesen</string>
+    <string name="txt_write">Speichern</string>
 </resources>
