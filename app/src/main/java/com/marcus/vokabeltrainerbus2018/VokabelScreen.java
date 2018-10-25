@@ -28,7 +28,7 @@ public class VokabelScreen extends AppCompatActivity {
                     startActivity(intentGerEn);
                     break;
                 case R.id.id_btn_importTxt:
-                    Intent intentImportTxt = new Intent(VokabelScreen.this, ReadWriteTxtFile.class);
+                    Intent intentImportTxt = new Intent(VokabelScreen.this, importTxt.class);
                     startActivity(intentImportTxt);
                     break;
                 default:
