@@ -79,7 +79,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/id_btn_okay"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_lbl_points" />
+        app:layout_constraintTop_toBottomOf="@+id/id_lbl_points"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/id_btn_solution"
