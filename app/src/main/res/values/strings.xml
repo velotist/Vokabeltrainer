@@ -1,18 +1,18 @@
 <resources>
     <string name="app_name">Vokabeltrainer BUS 2018</string>
-    <string name="btn_start">Start</string>
-    <string name="btn_importTxt">Vokabeln importieren</string>
+    <string name="btn_learn">Zum Üben</string>
+    <string name="btn_writeVocab">Zum Vokabelheft</string>
     <string name="lbl_points">Deine Punkte / Your Points</string>
     <string name="txt_pointsSum">0000</string>
-    <string name="btn_okay">OK</string>
-    <string name="btn_solution">Lösung / Solution</string>
+    <string name="btn_solution">Weiss es nicht</string>
     <string name="dsc_ffw">Building fit for work GmbH Offenburg</string>
-    <string name="btn_new">Neues Wort / New word</string>
+    <string name="btn_new">Nächstes Wort</string>
     <string name="dsc_blank" />
-    <string name="txt_true">Richtig / Correct</string>
-    <string name="txt_question">Frage / Question</string>
+    <string name="txt_true">Richtig</string>
+    <string name="txt_question">Vokabel</string>
     <string name="txt_english">Englisch</string>
     <string name="txt_german">Deutsch</string>
     <string name="txt_write">Speichern</string>
-    <string name="txt_homeScreen">Home</string>
+    <string name="txt_vocabs">Vokabeln</string>
+    <string name="txt_please_type">bitte eingeben</string>
 </resources>

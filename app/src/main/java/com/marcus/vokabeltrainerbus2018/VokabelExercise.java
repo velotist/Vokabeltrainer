@@ -1,5 +1,6 @@
 package com.marcus.vokabeltrainerbus2018;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,12 +31,12 @@ public class VokabelExercise extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vokabel_exercise);
-        Button btnOkay = findViewById(R.id.id_btn_okay);
-        btnOkay.setOnClickListener(clickListener);
         Button btnSolution = findViewById(R.id.id_btn_solution);
         btnSolution.setOnClickListener(clickListener);
         Button btnNew = findViewById(R.id.id_btn_new);
         btnNew.setOnClickListener(clickListener);
+        Button btnVocab = findViewById(R.id.id_btn_vocabularyII);
+        btnVocab.setOnClickListener(clickListener);
         loadPoints();
         pointsTxtView = findViewById(R.id.id_txt_points);
         pointsTxtView.setText(String.valueOf(pointsInt));
@@ -51,11 +52,6 @@ public class VokabelExercise extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
-                case R.id.id_btn_okay: {
-                    readTextView = answerTxtView.getText().toString();
-                    vokabelCompare();
-                    pointsTxtView.setText(String.valueOf(pointsInt));
-                }
                 case R.id.id_btn_solution:
                     if((int)methodRandom == 0) {
                         answerTxtView.setText(zeile2.get(indexRandom));
@@ -67,6 +63,10 @@ public class VokabelExercise extends AppCompatActivity {
                 case R.id.id_btn_new:
                     questionTxtView.setText(vokabelGiveBack());
                     answerTxtView.setText(R.string.dsc_blank);
+                    break;
+                case R.id.id_btn_vocabularyII:
+                    Intent intentVocabulary = new Intent(VokabelExercise.this, ImportTxt.class);
+                    startActivity(intentVocabulary);
                     break;
                 default:
                     break;
