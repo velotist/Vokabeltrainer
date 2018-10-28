@@ -19,13 +19,11 @@ public class VokabelExercise extends AppCompatActivity {
     private final ArrayList<String> zeile1 = new ArrayList<>();
     private final ArrayList<String> zeile2 = new ArrayList<>();
     private final ArrayList<String> alleZeilen = new ArrayList<>();
-    private TextView pointsTxtView;
     private TextView questionTxtView;
     private TextView answerTxtView;
     private int pointsInt = 0;
     private int indexRandom = 0;
     private static double methodRandom = Math.random() * 2;
-    private String readTextView = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class VokabelExercise extends AppCompatActivity {
         Button btnVocab = findViewById(R.id.id_btn_vocabularyII);
         btnVocab.setOnClickListener(clickListener);
         loadPoints();
-        pointsTxtView = findViewById(R.id.id_txt_points);
+        TextView pointsTxtView = findViewById(R.id.id_txt_points);
         pointsTxtView.setText(String.valueOf(pointsInt));
         ladeDatei();
         ladeInArray();
@@ -76,7 +74,7 @@ public class VokabelExercise extends AppCompatActivity {
 
     private void ladeDatei() {
         try {
-            InputStream vocFileIn = getApplicationContext().getAssets().open("vokabeln.txt");
+            InputStream vocFileIn = getApplicationContext().getAssets().open("/sdcard/vokabeln.txt");
             BufferedReader vocIn = new BufferedReader(new InputStreamReader(vocFileIn));
             String zeile;
         // Punktestand in Integer-Variable einlesen
@@ -91,7 +89,7 @@ public class VokabelExercise extends AppCompatActivity {
 
 // Methode zum Zuweisen der Zeile 1 in einen Array zeile1
 // und der Zeile 2 in einen Array zeile2
-private void ladeInArray() {
+    private void ladeInArray() {
         for (int i = 0; i < alleZeilen.size(); i = i + 2) {
             zeile1.add(alleZeilen.get(i));
         }
@@ -116,16 +114,9 @@ private void ladeInArray() {
         } return vokabel;
     }
 
-    private void vokabelCompare() {
-        if(readTextView.equals(zeile1.get(indexRandom)) || readTextView.equals(zeile2.get(indexRandom))) {
-            pointsInt = pointsInt + 10;
-            questionTxtView.setText(R.string.txt_true);
-        }
-    }
-
     private void loadPoints() {
          try {
-             InputStream fIn = getApplicationContext().getAssets().open("points.txt");
+             InputStream fIn = getApplicationContext().getAssets().open("/sdcard/points.txt");
              BufferedReader in = new BufferedReader(new InputStreamReader(fIn));
              String zeile;
          // Punktestand in Integer-Variable einlesen
