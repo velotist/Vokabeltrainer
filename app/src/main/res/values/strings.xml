@@ -15,4 +15,5 @@
     <string name="txt_write">Speichern</string>
     <string name="txt_vocabs">Vokabeln</string>
     <string name="txt_please_type">bitte eingeben</string>
+    <string name="txt_variable">wert</string>
 </resources>

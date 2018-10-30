@@ -10,12 +10,13 @@
     <EditText
         android:id="@+id/id_txt_english"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="29dp"
         android:gravity="center"
         android:hint="@string/txt_please_type"
         android:importantForAutofill="no"
@@ -24,9 +25,10 @@
         android:textAlignment="center"
         android:textColorHint="@color/colorAccent"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/id_txt_plain_german"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/id_txt_plain_english"
         tools:targetApi="o" />
 
     <EditText
@@ -35,7 +37,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginTop="18dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:gravity="center"
@@ -47,9 +49,9 @@
         android:textColorHint="@color/colorAccent"
         android:textIsSelectable="true"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/id_btn_exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/id_txt_plain_german"
         tools:hint="@string/txt_please_type"
         tools:targetApi="o" />
 
@@ -59,17 +61,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="51dp"
         android:layout_marginLeft="51dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginBottom="74dp"
         android:text="@string/txt_write"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_txt_german" />
 
     <Button
         android:id="@+id/id_btn_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="42dp"
-        android:layout_marginRight="42dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:text="@string/btn_learn"
         app:layout_constraintBottom_toBottomOf="@+id/id_btn_save"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +83,7 @@
         android:id="@+id/id_txt_plain_english"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
         android:autofillHints=""
         android:background="@null"
         android:clickable="false"
@@ -93,15 +98,16 @@
         android:textAlignment="center"
         android:textIsSelectable="false"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/id_txt_english"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="o" />
 
     <TextView
         android:id="@+id/id_txt_plain_german"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="199dp"
         android:autofillHints=""
         android:background="@null"
         android:clickable="false"
@@ -116,9 +122,9 @@
         android:textAlignment="center"
         android:textIsSelectable="false"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/id_txt_german"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:targetApi="o" />
 
 </android.support.constraint.ConstraintLayout>

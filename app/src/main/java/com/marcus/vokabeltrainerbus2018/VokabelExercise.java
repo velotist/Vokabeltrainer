@@ -1,18 +1,27 @@
 package com.marcus.vokabeltrainerbus2018;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import static com.marcus.vokabeltrainerbus2018.FileHelper.*;
 
 public class VokabelExercise extends AppCompatActivity {
 
@@ -21,9 +30,12 @@ public class VokabelExercise extends AppCompatActivity {
     private final ArrayList<String> alleZeilen = new ArrayList<>();
     private TextView questionTxtView;
     private TextView answerTxtView;
+    private TextView pointsTxtView;
     private int pointsInt = 0;
     private int indexRandom = 0;
     private static double methodRandom = Math.random() * 2;
+    private BufferedReader reader = null;
+    StringBuilder text = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +48,7 @@ public class VokabelExercise extends AppCompatActivity {
         Button btnVocab = findViewById(R.id.id_btn_vocabularyII);
         btnVocab.setOnClickListener(clickListener);
         loadPoints();
-        TextView pointsTxtView = findViewById(R.id.id_txt_points);
+        pointsTxtView = findViewById(R.id.id_txt_points);
         pointsTxtView.setText(String.valueOf(pointsInt));
         ladeDatei();
         ladeInArray();
@@ -73,17 +85,28 @@ public class VokabelExercise extends AppCompatActivity {
     };
 
     private void ladeDatei() {
+        String line = null;
         try {
-            InputStream vocFileIn = getApplicationContext().getAssets().open("/sdcard/vokabeln.txt");
-            BufferedReader vocIn = new BufferedReader(new InputStreamReader(vocFileIn));
+            FileInputStream fileInputStream = new FileInputStream(new File(path + fileName));
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            StringBuilder stringBuilder = new StringBuilder();
+            Toast.makeText(this, "SD Card available", Toast.LENGTH_LONG).show();
+            questionTxtView = findViewById(R.id.id_txt_question);
+            questionTxtView.setText(path + File.separator + "vokabeln.txt");
+            pointsTxtView = findViewById(R.id.id_txt_points);
             String zeile;
-        // Punktestand in Integer-Variable einlesen
-            while ((zeile = vocIn.readLine()) != null) {
-                alleZeilen.add(zeile);
+            while ((line = bufferedReader.readLine()) != null) {
+                alleZeilen.add(line);
             }
+            fileInputStream.close();
+            line = stringBuilder.toString();
+            bufferedReader.close();
+        } catch(FileNotFoundException ex) {
+            Log.d(TAG, ex.getMessage());
     // Ausnahmebehandlung
         } catch (IOException e) {
-            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "All loaded", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -114,9 +137,17 @@ public class VokabelExercise extends AppCompatActivity {
         } return vokabel;
     }
 
+    private void vokabelCompare() {
+        String readTextView = "";
+        if(readTextView.equals(zeile1.get(indexRandom)) || readTextView.equals(zeile2.get(indexRandom))) {
+            pointsInt = pointsInt + 10;
+            questionTxtView.setText(R.string.txt_true);
+        }
+    }
+
     private void loadPoints() {
          try {
-             InputStream fIn = getApplicationContext().getAssets().open("/sdcard/points.txt");
+             InputStream fIn = getApplicationContext().getAssets().open(path + "/points.txt");
              BufferedReader in = new BufferedReader(new InputStreamReader(fIn));
              String zeile;
          // Punktestand in Integer-Variable einlesen
@@ -125,7 +156,8 @@ public class VokabelExercise extends AppCompatActivity {
              }
     // Ausnahmebehandlung
          } catch (IOException e) {
-             Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+             Toast.makeText(this, "Loaded Points", Toast.LENGTH_SHORT)
+                     .show();
          }
     }
 }

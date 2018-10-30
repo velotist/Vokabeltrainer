@@ -30,17 +30,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="67dp"
         android:layout_marginLeft="67dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="253dp"
+        android:layout_marginBottom="158dp"
         android:ems="10"
         android:focusable="false"
         android:gravity="center"
         android:text="@string/lbl_points"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/id_btn_solution"
+        app:layout_constraintBottom_toTopOf="@+id/id_txt_answer"
         app:layout_constraintEnd_toStartOf="@+id/id_txt_points"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,14 +53,14 @@
         android:layout_marginLeft="39dp"
         android:layout_marginEnd="39dp"
         android:layout_marginRight="39dp"
-        android:layout_marginBottom="53dp"
+        android:layout_marginBottom="152dp"
         android:focusable="false"
         android:gravity="center"
         android:text="@string/txt_question"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/id_txt_answer"
+        app:layout_constraintBottom_toTopOf="@+id/id_btn_new"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_txt_points" />
@@ -69,9 +69,7 @@
         android:id="@+id/id_txt_answer"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginBottom="46dp"
+        android:layout_marginBottom="250dp"
         android:gravity="center"
         android:hint="@string/txt_please_type"
         android:importantForAutofill="no"
@@ -83,15 +81,15 @@
         android:textSize="24sp"
         android:typeface="normal"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/id_btn_new"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_txt_question"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/id_txt_varExercise"
+        app:layout_constraintTop_toBottomOf="@+id/id_txt_varExercise"
         tools:targetApi="o" />
 
     <Button
         android:id="@+id/id_btn_solution"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_marginStart="31dp"
         android:layout_marginLeft="31dp"
         android:layout_marginEnd="42dp"
@@ -101,7 +99,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/id_btn_new"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_lbl_points" />
+        app:layout_constraintTop_toBottomOf="@+id/id_txt_answer"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/id_btn_new"
@@ -114,17 +113,30 @@
         app:layout_constraintBottom_toTopOf="@+id/id_btn_vocabularyII"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/id_btn_solution"
-        app:layout_constraintTop_toBottomOf="@+id/id_txt_answer" />
+        app:layout_constraintTop_toBottomOf="@+id/id_txt_question" />
 
     <Button
         android:id="@+id/id_btn_vocabularyII"
         android:layout_width="180dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="47dp"
+        android:layout_marginBottom="46dp"
         android:text="@string/btn_writeVocab"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_btn_new" />
+
+    <TextView
+        android:id="@+id/id_txt_varExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/txt_variable"
+        app:layout_constraintBottom_toTopOf="@+id/id_txt_answer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
