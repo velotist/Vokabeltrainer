@@ -9,29 +9,30 @@
 
     <Button
         android:id="@+id/id_btn_start"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="31dp"
-        android:layout_marginRight="31dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
         android:text="@string/btn_learn"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/id_btn_vocabularyII"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/id_txt_vocabs" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/id_btn_vocabularyII"
+        app:layout_constraintEnd_toStartOf="@+id/id_btn_vocabularyII"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/id_img_ffw"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="77dp"
         android:contentDescription="@string/dsc_ffw"
-        app:layout_constraintBottom_toTopOf="@+id/id_txt_vocabs"
+        app:layout_constraintBottom_toTopOf="@+id/id_btn_vocabularyII"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -39,44 +40,26 @@
 
     <Button
         android:id="@+id/id_btn_vocabularyII"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="31dp"
-        android:layout_marginRight="31dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="99dp"
         android:text="@string/btn_writeVocab"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/id_txt_variable"
+        app:layout_constraintBottom_toTopOf="@+id/id_img_spi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/id_txt_vocabs"
-        app:layout_constraintTop_toBottomOf="@+id/id_txt_vocabs" />
-
-    <TextView
-        android:id="@+id/id_txt_vocabs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginRight="34dp"
-        android:text="@string/txt_vocabs"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/id_btn_vocabularyII"
-        app:layout_constraintEnd_toStartOf="@+id/id_btn_vocabularyII"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/id_btn_start"
         app:layout_constraintTop_toBottomOf="@+id/id_img_ffw" />
 
-    <TextView
-        android:id="@+id/id_txt_variable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
-        android:layout_marginLeft="133dp"
-        android:layout_marginBottom="76dp"
-        android:gravity="center"
-        android:text="@string/txt_variable"
-        android:textAlignment="center"
+    <ImageView
+        android:id="@+id/id_img_spi"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/dsc_spi"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_btn_vocabularyII" />
+        app:layout_constraintTop_toBottomOf="@+id/id_btn_vocabularyII"
+        app:srcCompat="@drawable/logola" />
+
 </android.support.constraint.ConstraintLayout>

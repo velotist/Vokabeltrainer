@@ -6,38 +6,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class VokabelScreen extends AppCompatActivity {
+
+    File pathSD = Environment.getExternalStorageDirectory();
+    File fileName = new File(pathSD,"vokabeln.txt");
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vokabel_screen);
-        File file = Environment.getExternalStorageDirectory();
-        File txtFile = new File(file.getAbsolutePath() + File.separator + "vokabeln.txt");
-        if(!txtFile.exists()) {
-            txtFile.mkdirs();
+
+        if(!fileName.exists()) {
             try {
-                txtFile.createNewFile();
+                fileName.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else {
-            Toast myToast = Toast.makeText(this, "File exists", Toast.LENGTH_SHORT);
-            myToast.show();
+        } else {
+            Toast myToastNew = Toast.makeText(this, "file existiert", Toast.LENGTH_SHORT);
+            myToastNew.show();
         }
         Button btnStart = findViewById(R.id.id_btn_start);
         btnStart.setOnClickListener(clickListener);
-        Button btnimportTxt = findViewById(R.id.id_btn_vocabularyII);
-        btnimportTxt.setOnClickListener(clickListener);
-        TextView txtVar = findViewById(R.id.id_txt_variable);
-        txtVar.setText(txtFile.toString());
+        Button btnImportTxt = findViewById(R.id.id_btn_vocabularyII);
+        btnImportTxt.setOnClickListener(clickListener);
     }
 
     private final View.OnClickListener clickListener = new View.OnClickListener() {

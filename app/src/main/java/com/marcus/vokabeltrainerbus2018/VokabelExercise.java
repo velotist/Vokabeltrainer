@@ -1,6 +1,5 @@
 package com.marcus.vokabeltrainerbus2018;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -15,13 +14,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-import static com.marcus.vokabeltrainerbus2018.FileHelper.*;
 
 public class VokabelExercise extends AppCompatActivity {
 
@@ -34,8 +30,8 @@ public class VokabelExercise extends AppCompatActivity {
     private int pointsInt = 0;
     private int indexRandom = 0;
     private static double methodRandom = Math.random() * 2;
-    private BufferedReader reader = null;
-    StringBuilder text = new StringBuilder();
+    File pathSD = Environment.getExternalStorageDirectory();
+    File fileName = new File(pathSD,"vokabeln.txt");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,23 +83,18 @@ public class VokabelExercise extends AppCompatActivity {
     private void ladeDatei() {
         String line = null;
         try {
-            FileInputStream fileInputStream = new FileInputStream(new File(path + fileName));
+            FileInputStream fileInputStream = new FileInputStream(fileName);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            StringBuilder stringBuilder = new StringBuilder();
-            Toast.makeText(this, "SD Card available", Toast.LENGTH_LONG).show();
             questionTxtView = findViewById(R.id.id_txt_question);
-            questionTxtView.setText(path + File.separator + "vokabeln.txt");
             pointsTxtView = findViewById(R.id.id_txt_points);
-            String zeile;
             while ((line = bufferedReader.readLine()) != null) {
                 alleZeilen.add(line);
             }
             fileInputStream.close();
-            line = stringBuilder.toString();
             bufferedReader.close();
         } catch(FileNotFoundException ex) {
-            Log.d(TAG, ex.getMessage());
+            Toast.makeText(this, "File not found exception", Toast.LENGTH_SHORT).show();
     // Ausnahmebehandlung
         } catch (IOException e) {
             Toast.makeText(this, "All loaded", Toast.LENGTH_SHORT).show();
@@ -147,7 +138,7 @@ public class VokabelExercise extends AppCompatActivity {
 
     private void loadPoints() {
          try {
-             InputStream fIn = getApplicationContext().getAssets().open(path + "/points.txt");
+             InputStream fIn = getApplicationContext().getAssets().open( "/points.txt");
              BufferedReader in = new BufferedReader(new InputStreamReader(fIn));
              String zeile;
          // Punktestand in Integer-Variable einlesen
