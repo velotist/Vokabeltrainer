@@ -4,48 +4,55 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Button;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ImportTxt extends AppCompatActivity {
 
-    private final String baseDir = Environment.getExternalStorageDirectory().getAbsolutePath();
     private TextView answerTxtViewEnglish;
     private TextView answerTxtViewGerman;
-
-    private String txtContentEnglish;
-    private String txtContentGerman;
+    Button btnSave;
+    Button btnExit;
+    File pathSD = Environment.getExternalStorageDirectory();
+    File fileName = new File(pathSD,"vokabeln.txt");
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vokabeln_txt);
-        Button btnSave = findViewById(R.id.id_btn_save);
-        btnSave.setOnClickListener(clickListener);
-        Button btnExit = findViewById(R.id.id_btn_exit);
-        btnExit.setOnClickListener(clickListener);
         answerTxtViewEnglish = findViewById(R.id.id_txt_english);
         answerTxtViewGerman = findViewById(R.id.id_txt_german);
+        btnSave = findViewById(R.id.id_btn_save);
+        btnExit = findViewById(R.id.id_btn_exit);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((!answerTxtViewEnglish.getText().toString().isEmpty()) && (!answerTxtViewGerman.getText().toString().isEmpty())) {
+                    saveToFile(answerTxtViewEnglish.getText().toString());
+                    saveToFile(answerTxtViewGerman.getText().toString());
+                    Toast.makeText(ImportTxt.this, "Saved", Toast.LENGTH_SHORT).show();
+                    answerTxtViewEnglish.setText("");
+                    answerTxtViewGerman.setText("");
+                } else {
+                    Toast.makeText(ImportTxt.this, "Bitte Englisch und Deutsch eintragen!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btnExit.setOnClickListener(clickListener);
     }
 
     private final View.OnClickListener clickListener = new View.OnClickListener() {
 
         @Override
         public void onClick(View view) {
-            String FILENAME = "vokabeln.txt";
             switch (view.getId()) {
-                case R.id.id_btn_save:
-                    txtContentEnglish = answerTxtViewEnglish.getText().toString();
-                    txtContentGerman = answerTxtViewGerman.getText().toString();
-                    save(FILENAME);
-                    break;
                 case R.id.id_btn_exit:
                     Intent intentExit = new Intent(ImportTxt.this, VokabelExercise.class);
                     startActivity(intentExit);
@@ -56,28 +63,16 @@ public class ImportTxt extends AppCompatActivity {
         }
     };
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
-    private void save(String FILENAME) {
+    public boolean saveToFile(String data){
         try {
-            File file = new File(baseDir + File.separator + FILENAME);
-
-        // If file does not exist, then create it
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            FileWriter fw = new FileWriter(file.getAbsoluteFile(),true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.append(txtContentEnglish).append("\n");
-            answerTxtViewEnglish.setText("");
-            bw.append(txtContentGerman).append("\n");
-            answerTxtViewGerman.setText("");
-            bw.close();
-
-            Log.d("Success","Gespeichert");
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            FileOutputStream fileOutputStream = new FileOutputStream(fileName,true);
+            fileOutputStream.write((data + System.getProperty("line.separator")).getBytes());
+            return true;
+        }  catch(FileNotFoundException ex) {
+            Toast.makeText(ImportTxt.this, "File not found exception", Toast.LENGTH_SHORT).show();
+        }  catch(IOException ex) {
+            Toast.makeText(ImportTxt.this, "IO Exception", Toast.LENGTH_SHORT).show();
         }
+        return false;
     }
 }
