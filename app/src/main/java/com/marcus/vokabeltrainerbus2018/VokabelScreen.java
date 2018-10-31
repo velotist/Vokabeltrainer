@@ -8,14 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class VokabelScreen extends AppCompatActivity {
 
-    File pathSD = Environment.getExternalStorageDirectory();
-    File fileName = new File(pathSD,"vokabeln.txt");
+    private final File pathSD = Environment.getExternalStorageDirectory();
+    private final File fileName = new File(pathSD,"vokabeln.txt");
+
+    private final ArrayList<String> alleZeilen = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,8 +36,14 @@ public class VokabelScreen extends AppCompatActivity {
                 e.printStackTrace();
             }
         } else {
-            Toast myToastNew = Toast.makeText(this, "file existiert", Toast.LENGTH_SHORT);
+            Toast myToastNew = Toast.makeText(this, "File exists", Toast.LENGTH_SHORT);
             myToastNew.show();
+        }
+        if(areVocabsSaved()) {
+            Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+        } else  {
+            Intent intentFirstVocab = new Intent(VokabelScreen.this, FirstVocab.class);
+            startActivity(intentFirstVocab);
         }
         Button btnStart = findViewById(R.id.id_btn_start);
         btnStart.setOnClickListener(clickListener);
@@ -56,4 +69,24 @@ public class VokabelScreen extends AppCompatActivity {
             }
         }
     };
+
+    private boolean areVocabsSaved() {
+        String line;
+        try {
+            FileInputStream fileInputStream = new FileInputStream(fileName);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            while ((line = bufferedReader.readLine()) != null) {
+                alleZeilen.add(line);
+            }
+            fileInputStream.close();
+            bufferedReader.close();
+        } catch(FileNotFoundException ex) {
+            Toast.makeText(this, "File not found exception", Toast.LENGTH_SHORT).show();
+            // Ausnahmebehandlung
+        } catch (IOException e) {
+            Toast.makeText(this, "All loaded", Toast.LENGTH_SHORT).show();
+        }
+        return alleZeilen.size() != 0;
+    }
 }

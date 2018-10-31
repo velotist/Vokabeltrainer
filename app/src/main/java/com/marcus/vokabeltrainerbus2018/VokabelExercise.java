@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,7 +14,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -27,11 +25,12 @@ public class VokabelExercise extends AppCompatActivity {
     private TextView questionTxtView;
     private TextView answerTxtView;
     private TextView pointsTxtView;
+    private TextView solutionTxtView;
     private int pointsInt = 0;
     private int indexRandom = 0;
     private static double methodRandom = Math.random() * 2;
-    File pathSD = Environment.getExternalStorageDirectory();
-    File fileName = new File(pathSD,"vokabeln.txt");
+    private final File pathSD = Environment.getExternalStorageDirectory();
+    private final File fileName = new File(pathSD,"vokabeln.txt");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,9 @@ public class VokabelExercise extends AppCompatActivity {
         btnNew.setOnClickListener(clickListener);
         Button btnVocab = findViewById(R.id.id_btn_vocabularyII);
         btnVocab.setOnClickListener(clickListener);
-        loadPoints();
+        Button btnAmIRight = findViewById(R.id.id_btn_habIchRecht);
+        btnAmIRight.setOnClickListener(clickListener);
+        solutionTxtView = findViewById(R.id.id_txt_solution);
         pointsTxtView = findViewById(R.id.id_txt_points);
         pointsTxtView.setText(String.valueOf(pointsInt));
         ladeDatei();
@@ -60,20 +61,24 @@ public class VokabelExercise extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.id_btn_solution:
                     if((int)methodRandom == 0) {
-                        answerTxtView.setText(zeile2.get(indexRandom));
+                        solutionTxtView.setText(zeile2.get(indexRandom));
                     }
                     else {
-                        answerTxtView.setText(zeile1.get(indexRandom));
+                        solutionTxtView.setText(zeile1.get(indexRandom));
                     }
                     break;
                 case R.id.id_btn_new:
                     questionTxtView.setText(vokabelGiveBack());
                     answerTxtView.setText(R.string.dsc_blank);
+                    solutionTxtView.setText(R.string.dsc_blank);
                     break;
                 case R.id.id_btn_vocabularyII:
                     Intent intentVocabulary = new Intent(VokabelExercise.this, ImportTxt.class);
                     startActivity(intentVocabulary);
                     break;
+                case R.id.id_btn_habIchRecht:
+                    vokabelCompare();
+                    pointsTxtView.setText(String.valueOf(pointsInt));
                 default:
                     break;
             }
@@ -81,13 +86,12 @@ public class VokabelExercise extends AppCompatActivity {
     };
 
     private void ladeDatei() {
-        String line = null;
+        String line;
         try {
             FileInputStream fileInputStream = new FileInputStream(fileName);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             questionTxtView = findViewById(R.id.id_txt_question);
-            pointsTxtView = findViewById(R.id.id_txt_points);
             while ((line = bufferedReader.readLine()) != null) {
                 alleZeilen.add(line);
             }
@@ -129,26 +133,13 @@ public class VokabelExercise extends AppCompatActivity {
     }
 
     private void vokabelCompare() {
-        String readTextView = "";
+        String readTextView = answerTxtView.getText().toString();
         if(readTextView.equals(zeile1.get(indexRandom)) || readTextView.equals(zeile2.get(indexRandom))) {
             pointsInt = pointsInt + 10;
             questionTxtView.setText(R.string.txt_true);
+            solutionTxtView.setText("");
+        } else {
+            solutionTxtView.setText(R.string.txt_wrong);
         }
-    }
-
-    private void loadPoints() {
-         try {
-             InputStream fIn = getApplicationContext().getAssets().open( "/points.txt");
-             BufferedReader in = new BufferedReader(new InputStreamReader(fIn));
-             String zeile;
-         // Punktestand in Integer-Variable einlesen
-             while ((zeile = in.readLine()) != null) {
-                 pointsInt = Integer.parseInt(zeile);
-             }
-    // Ausnahmebehandlung
-         } catch (IOException e) {
-             Toast.makeText(this, "Loaded Points", Toast.LENGTH_SHORT)
-                     .show();
-         }
     }
 }

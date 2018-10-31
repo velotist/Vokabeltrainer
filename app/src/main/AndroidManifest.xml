@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".VokabelExercise" />
         <activity android:name=".ImportTxt" />
+        <activity android:name=".FirstVocab" />
     </application>
 
 </manifest>

@@ -18,10 +18,8 @@ public class ImportTxt extends AppCompatActivity {
 
     private TextView answerTxtViewEnglish;
     private TextView answerTxtViewGerman;
-    Button btnSave;
-    Button btnExit;
-    File pathSD = Environment.getExternalStorageDirectory();
-    File fileName = new File(pathSD,"vokabeln.txt");
+    private final File pathSD = Environment.getExternalStorageDirectory();
+    private final File fileName = new File(pathSD,"vokabeln.txt");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +27,8 @@ public class ImportTxt extends AppCompatActivity {
         setContentView(R.layout.activity_vokabeln_txt);
         answerTxtViewEnglish = findViewById(R.id.id_txt_english);
         answerTxtViewGerman = findViewById(R.id.id_txt_german);
-        btnSave = findViewById(R.id.id_btn_save);
-        btnExit = findViewById(R.id.id_btn_exit);
+        Button btnSave = findViewById(R.id.id_btn_save);
+        Button btnExit = findViewById(R.id.id_btn_exit);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,16 +61,14 @@ public class ImportTxt extends AppCompatActivity {
         }
     };
 
-    public boolean saveToFile(String data){
+    private void saveToFile(String data){
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(fileName,true);
             fileOutputStream.write((data + System.getProperty("line.separator")).getBytes());
-            return true;
         }  catch(FileNotFoundException ex) {
             Toast.makeText(ImportTxt.this, "File not found exception", Toast.LENGTH_SHORT).show();
         }  catch(IOException ex) {
             Toast.makeText(ImportTxt.this, "IO Exception", Toast.LENGTH_SHORT).show();
         }
-        return false;
     }
 }
